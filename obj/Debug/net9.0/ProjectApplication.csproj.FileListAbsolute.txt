@@ -234,3 +234,4 @@ C:\W26\PROG8555 - Microsoft Web\src\ProjectApplication\obj\Debug\net9.0\refint\P
 C:\W26\PROG8555 - Microsoft Web\src\ProjectApplication\obj\Debug\net9.0\ProjectApplication.pdb
 C:\W26\PROG8555 - Microsoft Web\src\ProjectApplication\obj\Debug\net9.0\ProjectApplication.genruntimeconfig.cache
 C:\W26\PROG8555 - Microsoft Web\src\ProjectApplication\obj\Debug\net9.0\ref\ProjectApplication.dll
+C:\W26\PROG8555 - Microsoft Web\src\ProjectApplication\obj\Debug\net9.0\ProjectApplication.sourcelink.json

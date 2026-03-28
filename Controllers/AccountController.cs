@@ -47,11 +47,14 @@ namespace ProjectApplication.Controllers
                 EmailConfirmed = true
             };
 
+            // Identity handles all password hashing internally via CreateAsync.
+            // No manual hashing or comparison is performed anywhere in this controller.
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "User");
+                await _userManager.AddClaimAsync(user, new System.Security.Claims.Claim("FullName", $"{user.FirstName} {user.LastName}"));
                 await _signInManager.SignInAsync(user, isPersistent: false);
                 return RedirectToAction("Index", "Home");
             }
@@ -72,6 +75,10 @@ namespace ProjectApplication.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            // Rendering this view sets the anti-forgery cookie.
+            // The Login POST action uses [ValidateAntiForgeryToken],
+            // which ensures POST requests are only accepted after
+            // this GET has been served — direct POST attempts will fail.
             return View();
         }
 
@@ -81,17 +88,30 @@ namespace ProjectApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser appUser = await _userManager.FindByEmailAsync(model.Email);
+                var result = await _signInManager.PasswordSignInAsync(
+                    model.Email,
+                    model.Password,
+                    model.RememberMe,
+                    lockoutOnFailure: true
+                );
 
-                if (appUser != null)
+                if (result.Succeeded)
                 {
-                    bool result = await _userManager.CheckPasswordAsync(appUser, model.Password);
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    var existingClaim = await _userManager.GetClaimsAsync(user);
 
-                    if (result)
+                    if (!existingClaim.Any(c => c.Type == "FullName"))
                     {
-                        await _signInManager.SignInAsync(appUser, model.RememberMe);
-                        return RedirectToAction("Index", "Home");
+                        await _userManager.AddClaimAsync(user,
+                            new System.Security.Claims.Claim("FullName", $"{user.FirstName} {user.LastName}"));
                     }
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                if (result.IsLockedOut)
+                {
+                    return RedirectToAction("Lockout", "Account");
                 }
             }
             ModelState.AddModelError(string.Empty, "Invalid username or password");
@@ -109,6 +129,12 @@ namespace ProjectApplication.Controllers
 
         [HttpGet]
         public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Lockout()
         {
             return View();
         }

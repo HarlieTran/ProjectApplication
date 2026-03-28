@@ -47,6 +47,10 @@ namespace ProjectApplication
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.ExpireTimeSpan = TimeSpan.FromDays(7);
                 options.SlidingExpiration = true;
+
+                // Session cookie expires when browser closes if RememberMe is false
+                options.Cookie.IsEssential = true;
+                options.SessionStore = null;
             });
 
 

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Account Locked";
+}
+
+@await Html.PartialAsync("_Header", "Account Locked")
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 p-3 shadow-sm rounded text-center" style="width: 60%">
+        <div class="card-body py-5">
+            <h1 class="display-1 text-warning">🔒</h1>
+            <h4 class="text-warning">Your account has been temporarily locked.</h4>
+            <p class="text-muted mt-3">
+                Too many failed login attempts. Please try again in <strong>5 minutes</strong>.
+            </p>
+            <div class="mt-4">
+                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-secondary">
+                    Back to Login
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

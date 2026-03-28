@@ -10,7 +10,7 @@
         @if (User.Identity!.IsAuthenticated)
         {
             <div class="text-center py-4">
-                <h4 class="fw-semibold">Hello, @User.Identity.Name 👋</h4>
+                <h4 class="fw-semibold">Hello, @(User.FindFirst("FullName")?.Value ?? User.Identity!.Name) 👋</h4>
                 <p class="text-muted mt-2">You are logged in. Use the navigation bar to get started.</p>
 
                 @if (User.IsInRole("Admin"))

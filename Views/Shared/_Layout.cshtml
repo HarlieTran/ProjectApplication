@@ -60,7 +60,7 @@
                         {
                             <li class="nav-item">
                                 <span class="nav-link text-muted fw-semibold">
-                                    Hello, @User.Identity.Name
+                                    Hello, @(User.FindFirst("FullName")?.Value ?? User.Identity!.Name)
                                 </span>
                             </li>
                             <li class="nav-item">
