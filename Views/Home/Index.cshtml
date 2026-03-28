@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@await Html.PartialAsync("_Header", "Welcome to GroupProject")
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 p-4 shadow-sm rounded h-auto" style="width: 60%">
+
+        @if (User.Identity!.IsAuthenticated)
+        {
+            <div class="text-center py-4">
+                <h4 class="fw-semibold">Hello, @User.Identity.Name 👋</h4>
+                <p class="text-muted mt-2">You are logged in. Use the navigation bar to get started.</p>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-secondary mt-3">
+                        Go to Admin Dashboard
+                    </a>
+                }
+                else if (User.IsInRole("Manager"))
+                {
+                    <a asp-controller="Manager" asp-action="Index" class="btn btn-outline-secondary mt-3">
+                        Go to Manager Panel
+                    </a>
+                }
+                else
+                {
+                    <p class="text-muted mt-3">You are logged in as a standard user.</p>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-4">
+                <h4 class="fw-semibold">Welcome!</h4>
+                <p class="text-muted mt-2">
+                    Please use the navigation bar above to login or create an account.
+                </p>
+            </div>
+        }
+
+    </div>
+</div>
