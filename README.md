@@ -116,7 +116,6 @@ role-based access control, and account lockout protection.
 
 Controllers/
   AccountController.cs   — Register, Login, Logout, Lockout, AccessDenied
-  AdminController.cs     — Protected route (Admin role only)
 
 Models/
   ApplicationUser.cs     — Extends IdentityUser with FirstName, LastName
