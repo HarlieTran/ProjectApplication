@@ -1,0 +1,86 @@
+@model EditUserViewModel
+@{
+    ViewData["Title"] = "Manage User";
+}
+
+@await Html.PartialAsync("_Header", "Manage User")
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 p-3 h-auto" style="width: 70%">
+        <div class="card-body">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+                <div>
+                    <h5 class="mb-1">Update User Details</h5>
+                    <p class="text-muted mb-0">
+                        Edit profile information and control the user's application role.
+                    </p>
+                </div>
+                <div class="text-md-end">
+                    <span class="badge @(Model.IsLockedOut ? "text-bg-warning" : "text-bg-success")">
+                        @(Model.IsLockedOut ? "Locked" : "Active")
+                    </span>
+                    @if (Model.IsCurrentUser)
+                    {
+                        <div class="small text-muted mt-2">You are editing your own account.</div>
+                    }
+                </div>
+            </div>
+
+            <form asp-action="Edit" method="post">
+                <input asp-for="Id" type="hidden" />
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" placeholder="First name" />
+                        <span asp-validation-for="FirstName" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" placeholder="Last name" />
+                        <span asp-validation-for="LastName" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="SelectedRole" class="form-label"></label>
+                    <select asp-for="SelectedRole" class="form-select">
+                        @foreach (var role in Model.AvailableRoles)
+                        {
+                            <option value="@role">@role</option>
+                        }
+                    </select>
+                    <span asp-validation-for="SelectedRole" class="text-danger small"></span>
+                    <div class="form-text">
+                        Admins can access the dashboard, Managers can access manager tools, and Users have standard access.
+                    </div>
+                </div>
+
+                <div class="alert alert-light border">
+                    <strong>Safety checks:</strong> The current Admin cannot remove their own Admin role,
+                    and the final remaining Admin account cannot be demoted or locked.
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a asp-action="ResetPassword" asp-route-id="@Model.Id" class="btn btn-secondary ms-2">Reset Password</a>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">Back to Dashboard</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

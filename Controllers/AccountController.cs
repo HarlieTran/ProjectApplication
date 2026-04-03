@@ -24,7 +24,7 @@ namespace ProjectApplication.Controllers
         public IActionResult Register()
         {
             // Redirect already logged-in users away from register page
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -70,7 +70,7 @@ namespace ProjectApplication.Controllers
         public IActionResult Login()
         {
             // Redirect already logged-in users away from login page
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity?.IsAuthenticated == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -98,6 +98,13 @@ namespace ProjectApplication.Controllers
                 if (result.Succeeded)
                 {
                     var user = await _userManager.FindByEmailAsync(model.Email);
+
+                    if (user is null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Unable to load the signed-in user.");
+                        return View("Login", model);
+                    }
+
                     var existingClaim = await _userManager.GetClaimsAsync(user);
 
                     if (!existingClaim.Any(c => c.Type == "FullName"))
