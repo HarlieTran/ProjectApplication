@@ -41,6 +41,9 @@
                                         Admin Dashboard
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-muted" asp-controller="Admin" asp-action="Roles">Role Management</a>
+                                </li>
                             }
 
                             @if (User.IsInRole("Manager") || User.IsInRole("Admin"))

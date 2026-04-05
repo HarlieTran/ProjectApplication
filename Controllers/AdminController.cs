@@ -1,10 +1,11 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjectApplication.Models;
 using ProjectApplication.ViewModels;
+using System.Security.Claims;
 
 namespace ProjectApplication.Controllers
 {
@@ -22,6 +23,11 @@ namespace ProjectApplication.Controllers
             _roleManager = roleManager;
         }
 
+        // ----------------------------------------------------------------------- 
+        // USER MANAGEMENT ACTIONS 
+        // -----------------------------------------------------------------------
+
+        // GET: /Admin
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -64,6 +70,7 @@ namespace ProjectApplication.Controllers
             return View(model);
         }
 
+        // GET: /Admin/Create
         [HttpGet]
         public async Task<IActionResult> Create()
         {
@@ -72,6 +79,7 @@ namespace ProjectApplication.Controllers
             return View(model);
         }
 
+        // POST: /Admin/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserViewModel model)
@@ -145,6 +153,7 @@ namespace ProjectApplication.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: /Admin/Edit/{id}
         [HttpGet]
         public async Task<IActionResult> Edit(string id)
         {
@@ -164,6 +173,7 @@ namespace ProjectApplication.Controllers
             return View(model);
         }
 
+        // POST: /Admin/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditUserViewModel model)
@@ -284,6 +294,7 @@ namespace ProjectApplication.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: /Admin/ResetPassword/{id}
         [HttpGet]
         public async Task<IActionResult> ResetPassword(string id)
         {
@@ -309,6 +320,7 @@ namespace ProjectApplication.Controllers
             return View(model);
         }
 
+        // POST: /Admin/ResetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
@@ -344,6 +356,7 @@ namespace ProjectApplication.Controllers
             return RedirectToAction(nameof(Edit), new { id = user.Id });
         }
 
+        // POST: /Admin/ToggleLock/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ToggleLock(string id)
@@ -415,6 +428,7 @@ namespace ProjectApplication.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // POST: /Admin/Delete/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string id)
@@ -464,6 +478,295 @@ namespace ProjectApplication.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // ----------------------------------------------------------------------- 
+        // ROLE MANAGEMENT ACTIONS 
+        // -----------------------------------------------------------------------
+
+        // GET: Admin/Roles
+        public async Task<IActionResult> Roles()
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            var roleViewModels = new List<RoleViewModel>();
+
+            foreach (var role in roles)
+            {
+                var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+
+                roleViewModels.Add(new RoleViewModel
+                {
+                    Id = role.Id,
+                    Name = role.Name,
+                    UserCount = usersInRole.Count,
+                    Users = (List<ApplicationUser>)usersInRole
+                });
+            }
+
+            return View(roleViewModels);
+        }
+
+        // GET: Admin/CreateRole
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+
+        // POST: Admin/CreateRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Check if role already exists
+                var roleExists = await _roleManager.RoleExistsAsync(model.RoleName);
+                if (roleExists)
+                {
+                    ModelState.AddModelError("", "Role already exists");
+                    return View(model);
+                }
+
+                // Create the role
+                var result = await _roleManager.CreateAsync(new IdentityRole(model.RoleName));
+
+                if (result.Succeeded)
+                {
+                    TempData["Success"] = $"Role '{model.RoleName}' created successfully";
+                    return RedirectToAction(nameof(Roles));
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        // GET: Admin/EditRole/{id}
+        public async Task<IActionResult> EditRole(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                return NotFound();
+            }
+
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+
+            var model = new EditRoleViewModel
+            {
+                Id = role.Id,
+                RoleName = role.Name,
+                Users = usersInRole.Select(u => u.UserName).ToList()
+            };
+
+            return View(model);
+        }
+
+        // POST: Admin/EditRole/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRole(EditRoleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var role = await _roleManager.FindByIdAsync(model.Id);
+                if (role == null)
+                {
+                    return NotFound();
+                }
+
+                role.Name = model.RoleName;
+                var result = await _roleManager.UpdateAsync(role);
+
+                if (result.Succeeded)
+                {
+                    TempData["Success"] = $"Role updated successfully";
+                    return RedirectToAction(nameof(Roles));
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+
+            return View(model);
+        }
+
+        // POST: Admin/DeleteRole/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role == null)
+            {
+                return NotFound();
+            }
+
+            // Check if any users are in this role
+            var usersInRole = await _userManager.GetUsersInRoleAsync(role.Name);
+            if (usersInRole.Any())
+            {
+                TempData["Error"] = $"Cannot delete role '{role.Name}' because it has {usersInRole.Count} user(s) assigned to it.";
+                return RedirectToAction(nameof(Roles));
+            }
+
+            var result = await _roleManager.DeleteAsync(role);
+
+            if (result.Succeeded)
+            {
+                TempData["Success"] = $"Role '{role.Name}' deleted successfully";
+            }
+            else
+            {
+                TempData["Error"] = "Failed to delete role";
+            }
+
+            return RedirectToAction(nameof(Roles));
+        }
+
+        // GET: Admin/AssignRole
+        public async Task<IActionResult> AssignRole()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var roles = await _roleManager.Roles.ToListAsync();
+
+            var model = new AssignRoleViewModel
+            {
+                Users = users.Select(u => new SelectListItem
+                {
+                    Value = u.Id,
+                    Text = $"{u.UserName} ({u.Email})"
+                }).ToList(),
+                Roles = roles.Select(r => new SelectListItem
+                {
+                    Value = r.Name,
+                    Text = r.Name
+                }).ToList()
+            };
+
+            return View(model);
+        }
+
+        // POST: Admin/AssignRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AssignRole(AssignRoleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "User not found");
+                }
+                else
+                {
+                    // Check if user already has this role
+                    var isInRole = await _userManager.IsInRoleAsync(user, model.RoleName);
+                    if (isInRole)
+                    {
+                        TempData["Error"] = $"User '{user.UserName}' already has the role '{model.RoleName}'";
+                    }
+                    else
+                    {
+                        var result = await _userManager.AddToRoleAsync(user, model.RoleName);
+
+                        if (result.Succeeded)
+                        {
+                            TempData["Success"] = $"Role '{model.RoleName}' assigned to '{user.UserName}' successfully";
+                            return RedirectToAction(nameof(AssignRole));
+                        }
+
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+                }
+            }
+
+            // Reload dropdowns if validation fails
+            var users = await _userManager.Users.ToListAsync();
+            var roles = await _roleManager.Roles.ToListAsync();
+
+            model.Users = users.Select(u => new SelectListItem
+            {
+                Value = u.Id,
+                Text = $"{u.UserName} ({u.Email})"
+            }).ToList();
+            model.Roles = roles.Select(r => new SelectListItem
+            {
+                Value = r.Name,
+                Text = r.Name
+            }).ToList();
+
+            return View(model);
+        }
+
+        // POST: Admin/RemoveUserFromRole
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RemoveUserFromRole(string userId, string roleName)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                TempData["Error"] = "User not found";
+                return RedirectToAction(nameof(Roles));
+            }
+
+            var result = await _userManager.RemoveFromRoleAsync(user, roleName);
+
+            if (result.Succeeded)
+            {
+                TempData["Success"] = $"Role '{roleName}' removed from '{user.UserName}' successfully";
+            }
+            else
+            {
+                TempData["Error"] = "Failed to remove role from user";
+            }
+
+            return RedirectToAction(nameof(Roles));
+        }
+
+        // GET: Admin/ManageUserRoles/{id}
+        public async Task<IActionResult> ManageUserRoles(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            var allRoles = await _roleManager.Roles.ToListAsync();
+
+            var model = new UserRoleViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                Roles = userRoles.ToList()
+            };
+
+            ViewBag.AllRoles = allRoles.Select(r => r.Name).ToList();
+            ViewBag.AvailableRoles = allRoles.Where(r => !userRoles.Contains(r.Name)).Select(r => r.Name).ToList();
+
+            return View(model);
+        }
+
+        // Helper methods
+
+        // Builds an EditUserViewModel for the specified user, including their current role and lockout status.
         private async Task<EditUserViewModel> BuildEditUserViewModelAsync(ApplicationUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);
@@ -482,6 +785,7 @@ namespace ProjectApplication.Controllers
             return model;
         }
 
+        // Populates the AvailableRoles property of the view model with the list of roles from the database, ordered alphabetically.
         private async Task PopulateRolesAsync(CreateUserViewModel model)
         {
             model.AvailableRoles = await _roleManager.Roles
@@ -490,6 +794,7 @@ namespace ProjectApplication.Controllers
                 .ToListAsync();
         }
 
+        // Overload for EditUserViewModel
         private async Task PopulateRolesAsync(EditUserViewModel model)
         {
             model.AvailableRoles = await _roleManager.Roles
@@ -498,6 +803,7 @@ namespace ProjectApplication.Controllers
                 .ToListAsync();
         }
 
+        // Replaces the "FullName" claim for the specified user with a new claim that combines their current first and last name. If the user does not have an existing "FullName" claim, a new one will be added.
         private async Task<IdentityResult> ReplaceFullNameClaimAsync(ApplicationUser user)
         {
             var existingClaims = await _userManager.GetClaimsAsync(user);
@@ -518,6 +824,7 @@ namespace ProjectApplication.Controllers
                 new Claim("FullName", $"{user.FirstName} {user.LastName}".Trim()));
         }
 
+        // Adds the errors from an IdentityResult to the ModelState, allowing them to be displayed in the view.
         private void AddErrorsToModelState(IdentityResult identityResult)
         {
             foreach (var error in identityResult.Errors)
