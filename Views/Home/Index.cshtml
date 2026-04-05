@@ -18,6 +18,9 @@
                     <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-secondary mt-3">
                         Go to Admin Dashboard
                     </a>
+                    <p class="text-muted mt-3 mb-0">
+                        Review registered users, assign roles, and control account access from the dashboard.
+                    </p>
                 }
                 else if (User.IsInRole("Manager"))
                 {
