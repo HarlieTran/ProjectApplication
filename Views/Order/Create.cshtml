@@ -1,0 +1,42 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Place Order";
+}
+
+@await Html.PartialAsync("_Header", "Place Your Order")
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 p-3 shadow-sm" style="width: 55%">
+        <div class="card-body">
+
+            <div class="d-flex gap-3 mb-4">
+                <img src="@Model.ImageUrl" alt="@Model.Name"
+                     style="width:100px; height:100px; object-fit:cover; border-radius:8px;"
+                     onerror="this.src='https://placehold.co/100x100?text=?'" />
+                <div>
+                    <span class="badge text-bg-secondary mb-1">@Model.Category</span>
+                    <h5 class="mb-1">@Model.Name</h5>
+                    <p class="text-muted small mb-1">@Model.Description</p>
+                    <span class="fw-bold text-success">$@Model.Price.ToString("0.00")</span>
+                </div>
+            </div>
+
+            <form asp-action="Create" method="post">
+                <input type="hidden" name="productId" value="@Model.Id" />
+
+                <div class="mb-4">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" name="quantity" value="1" min="1" max="20"
+                           class="form-control" style="width: 120px" />
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Confirm Order</button>
+                    <a asp-controller="Product" asp-action="Index"
+                       class="btn btn-secondary ms-2">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

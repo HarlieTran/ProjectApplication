@@ -1,0 +1,75 @@
+﻿@model Order
+@{
+    ViewData["Title"] = $"Order #{Model.Id}";
+}
+
+@await Html.PartialAsync("_Header", $"Order #{Model.Id}")
+
+<div class="d-flex justify-content-center">
+    <div class="card mb-3 p-3 shadow-sm" style="width: 65%">
+        <div class="card-body">
+
+            <div class="alert alert-light border mb-4">
+                <strong>Placed by:</strong> @Model.User.FirstName @Model.User.LastName
+                (@Model.User.Email)<br />
+                <strong>Date:</strong> @Model.CreatedAt.ToLocalTime().ToString("MMM d, yyyy h:mm tt")<br />
+                <strong>Audit:</strong> <span class="fst-italic text-muted">@Model.AuditLog</span>
+            </div>
+
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Qty</th>
+                        <th class="text-end">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@item.Product.Name</td>
+                            <td>@item.Product.Category</td>
+                            <td>$@item.UnitPrice.ToString("0.00")</td>
+                            <td>@item.Quantity</td>
+                            <td class="text-end">$@((item.UnitPrice * item.Quantity).ToString("0.00"))</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Total</td>
+                        <td class="text-end fw-bold text-success">
+                            $@Model.TotalAmount.ToString("0.00")
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="text-center mt-4">
+                <div class="d-inline-flex flex-column gap-2 align-items-center mb-3">
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-warning btn-sm" style="min-width: 150px;">
+                            Edit Order
+                        </a>
+                        <a asp-action="DeleteConfirm" asp-route-id="@Model.Id" class="btn btn-outline-danger btn-sm" style="min-width: 150px;">
+                            Delete Order
+                        </a>
+                    }
+                </div>
+                <div class="d-inline-flex gap-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-sm" style="min-width: 150px;">
+                        My Orders
+                    </a>
+                    <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary btn-sm" style="min-width: 150px;">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

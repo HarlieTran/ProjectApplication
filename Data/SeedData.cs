@@ -85,6 +85,25 @@ namespace ProjectApplication.Data
                 if (result.Succeeded)
                     await userManager.AddToRoleAsync(user, "User");
             }
+
+            // 5. Seed Fashion Products
+            var context = serviceProvider.GetRequiredService<AppDbContext>();
+
+            if (!context.Products.Any())
+            {
+                var products = new List<Product>
+                {
+                    new Product { Name = "Classic White Tee", Category = "Tops", Price = 19.99m, Description = "A clean everyday essential.", ImageUrl = "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" },
+                    new Product { Name = "Slim Fit Jeans", Category = "Bottoms", Price = 59.99m, Description = "Modern slim cut in dark wash denim.", ImageUrl = "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400" },
+                    new Product { Name = "Floral Summer Dress", Category = "Dresses", Price = 49.99m, Description = "Light and breezy for warm days.", ImageUrl = "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400" },
+                    new Product { Name = "Leather Jacket", Category = "Outerwear", Price = 129.99m, Description = "Classic biker style leather jacket.", ImageUrl = "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400" },
+                    new Product { Name = "White Sneakers", Category = "Shoes", Price = 79.99m, Description = "Minimalist sneakers for any outfit.", ImageUrl = "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400" },
+                    new Product { Name = "Wool Scarf", Category = "Accessories", Price = 24.99m, Description = "Soft merino wool in neutral tones.", ImageUrl = "https://images.unsplash.com/photo-1601924351433-3d7a64c1f883?w=400" },
+                };
+        
+                context.Products.AddRange(products);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

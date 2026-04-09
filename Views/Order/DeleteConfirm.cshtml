@@ -1,0 +1,46 @@
+@model Order
+@{
+    ViewData["Title"] = $"Delete Order #{Model.Id}";
+}
+
+@await Html.PartialAsync("_Header", $"Delete Order #{Model.Id}")
+
+<div class="card mx-auto mt-4" style="max-width: 600px;">
+    <div class="card-body">
+        <h4 class="card-title text-danger mb-4">
+            <i class="bi bi-exclamation-triangle"></i> Confirm Delete
+        </h4>
+
+        <div class="alert alert-warning" role="alert">
+            <p class="mb-0">
+                <strong>Are you sure you want to delete this order?</strong> This action cannot be undone.
+            </p>
+        </div>
+
+        <div class="card bg-light mb-4">
+            <div class="card-body">
+                <p class="mb-2"><strong>Order #@Model.Id</strong></p>
+                <p class="mb-2">
+                    <strong>Placed by:</strong> @Model.User.FirstName @Model.User.LastName
+                </p>
+                <p class="mb-2">
+                    <strong>Date:</strong> @Model.CreatedAt.ToLocalTime().ToString("MMM d, yyyy h:mm tt")
+                </p>
+                <p class="mb-0">
+                    <strong>Total:</strong> <span class="text-success">$@Model.TotalAmount.ToString("0.00")</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 justify-content-end">
+            <a asp-action="Detail" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                Cancel
+            </a>
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="m-0 p-0 d-inline">
+                <button type="submit" class="btn btn-danger">
+                    Delete Order
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

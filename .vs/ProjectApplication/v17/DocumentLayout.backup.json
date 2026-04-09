@@ -1,70 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\",
+  "WorkspaceRootPath": "C:\\W26\\PROG8555 - Microsoft Web\\src\\ProjectApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\admin\\roles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\admin\\roles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\viewmodels\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:viewmodels\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\viewmodels\\userroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:viewmodels\\userroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\viewmodels\\assignroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:viewmodels\\assignroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\viewmodels\\createroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:viewmodels\\createroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\viewmodels\\editroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:viewmodels\\editroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\admin\\editrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\admin\\editrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\admin\\createrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\admin\\createrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\admin\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\admin\\assignrole.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\users\\peter\\source\\repos\\projectapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|c:\\w26\\prog8555 - microsoft web\\src\\projectapplication\\data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{309505C4-CC14-4E1A-ADDE-8AB932FDCFE3}|ProjectApplication.csproj|solutionrelative:data\\seeddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,15 +14,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
             },
             {
               "$type": "Bookmark",
@@ -102,210 +42,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAIwGMAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T02:07:15.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Roles.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\Roles.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\Roles.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\Roles.cshtml",
-              "RelativeToolTip": "Views\\Admin\\Roles.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADEAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:22:49.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserRoleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\UserRoleViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\UserRoleViewModel.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\UserRoleViewModel.cs",
-              "RelativeToolTip": "ViewModels\\UserRoleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Title": "SeedData.cs",
+              "DocumentMoniker": "C:\\W26\\PROG8555 - Microsoft Web\\src\\ProjectApplication\\Data\\SeedData.cs",
+              "RelativeDocumentMoniker": "Data\\SeedData.cs",
+              "ToolTip": "C:\\W26\\PROG8555 - Microsoft Web\\src\\ProjectApplication\\Data\\SeedData.cs",
+              "RelativeToolTip": "Data\\SeedData.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:14:17.798Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EditRoleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\EditRoleViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\EditRoleViewModel.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\EditRoleViewModel.cs",
-              "RelativeToolTip": "ViewModels\\EditRoleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:13:17.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AssignRoleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\AssignRoleViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AssignRoleViewModel.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\AssignRoleViewModel.cs",
-              "RelativeToolTip": "ViewModels\\AssignRoleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:13:44.277Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RoleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\RoleViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\RoleViewModel.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\RoleViewModel.cs",
-              "RelativeToolTip": "ViewModels\\RoleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:06:21.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateRoleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\CreateRoleViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\CreateRoleViewModel.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\ViewModels\\CreateRoleViewModel.cs",
-              "RelativeToolTip": "ViewModels\\CreateRoleViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:12:49.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "EditRole.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\EditRole.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\EditRole.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\EditRole.cshtml",
-              "RelativeToolTip": "Views\\Admin\\EditRole.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABUAAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:23:45.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\AdminController.cs",
-              "ViewState": "AgIAAN0BAAAAAAAAAAApwPMBAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:14:38.843Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ManagerController.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\ManagerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Controllers\\ManagerController.cs",
-              "RelativeToolTip": "Controllers\\ManagerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T22:28:11.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CreateRole.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\CreateRole.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\CreateRole.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\CreateRole.cshtml",
-              "RelativeToolTip": "Views\\Admin\\CreateRole.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:23:24.805Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AssignRole.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\AssignRole.cshtml",
-              "RelativeDocumentMoniker": "Views\\Admin\\AssignRole.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Admin\\AssignRole.cshtml",
-              "RelativeToolTip": "Views\\Admin\\AssignRole.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:27:34.596Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Manager\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Manager\\Index.cshtml",
-              "RelativeToolTip": "Views\\Manager\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:39:35.341Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-04T22:39:59.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-04T20:43:26.685Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Peter\\source\\repos\\ProjectApplication\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T20:43:11.474Z",
+              "WhenOpened": "2026-04-09T18:04:58.578Z",
               "EditorCaption": ""
             }
           ]

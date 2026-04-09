@@ -1,0 +1,59 @@
+﻿@model List<Order>
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+@await Html.PartialAsync("_Header", "My Orders")
+
+@if (TempData["StatusMessage"] != null)
+{
+    <div class="alert alert-@TempData["StatusType"] alert-dismissible fade show" role="alert">
+        @TempData["StatusMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (!Model.Any())
+{
+    <div class="text-center py-5 text-muted">
+        <p>You have not placed any orders yet.</p>
+        <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary">
+            Browse Products
+        </a>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Date</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">#@order.Id</td>
+                            <td>@order.CreatedAt.ToLocalTime().ToString("MMM d, yyyy h:mm tt")</td>
+                            <td>@order.Items.Sum(i => i.Quantity) item(s)</td>
+                            <td class="text-success fw-semibold">$@order.TotalAmount.ToString("0.00")</td>
+                            <td class="text-end">
+                                <a asp-action="Detail" asp-route-id="@order.Id"
+                                   class="btn btn-sm btn-secondary">
+                                    View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
